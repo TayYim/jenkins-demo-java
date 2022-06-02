@@ -3,30 +3,17 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    echo 'This is a test report.'
-                }
+                echo 'This is a test'
             }
         }
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                echo 'This is a build'
             }
         }
         stage('Deploy') {
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
-                submitter "alice,bob"
-                parameters {
-                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                }
-            }
             steps {
-                sh './scripts/deploy.sh'
+                echo 'This is a deploy'
             }
         }
     }
