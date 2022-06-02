@@ -17,9 +17,7 @@ pipeline {
             }
         }
         stage('Deploy') {
-            input {
-              message "Ready to deploy?"
-            }
+            input message: 'Ready to deploy? (Click "Proceed" to continue)'
             steps {
                 sh './scripts/deploy.sh'
             }
